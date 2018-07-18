@@ -31,7 +31,7 @@ RUN echo "@php https://php.codecasts.rocks/v3.7/php-7.2" >> /etc/apk/repositorie
 # install php and some extensions
 # notice the @php is required to avoid getting default php packages from alpine instead.
 RUN apk add --update php@php
-RUN apk add --update php-mbstring@php php-fpm@php php-openssl@php php-phar@php php-json@php
+RUN apk add --update php-mbstring@php php-fpm@php php-openssl@php php-phar@php php-json@php php-session@php
 
 #Enable openssl 
 #RUN sed -i -e "s/;extension=openssl/extension=openssl/g" ${php_conf}
