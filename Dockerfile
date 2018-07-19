@@ -35,7 +35,7 @@ RUN apk add --update php-bcmath@php php-pdo@php php-gd@php php-pdo_mysql@php
 RUN apk add --update php-bz2@php php-calendar@php php-ctype@php php-curl@php php-dba@php \
  php-dom@php php-embed@php php-enchant@php php-exif@php php-ftp@php \
  php-gettext@php php-gmp@php php-iconv@php php-imap@php php-intl@php php-json@php \
- php-ldap@php php-litespeed@php php-mbstring@php php-mcrypt@php php-mysqli@php \
+ php-ldap@php php-litespeed@php php-mbstring@php php-mysqli@php \
  php-mysqlnd@php php-odbc@php php-opcache@php php-pcntl@php \
  php-pdo_dblib@php php-pdo_pgsql@php php-pdo_sqlite@php \
  php-pear@php php-pgsql@php php-phpdbg@php php-posix@php php-pspell@php \
