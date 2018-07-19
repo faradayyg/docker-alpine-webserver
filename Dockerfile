@@ -29,7 +29,7 @@ RUN echo "@php https://php.codecasts.rocks/v3.7/php-7.2" >> /etc/apk/repositorie
 # notice the @php is required to avoid getting default php packages from alpine instead.
 RUN apk add --update php@php
 RUN apk add --update php-mbstring@php php-fpm@php php-openssl@php php-phar@php php-json@php php-session@php
-RUN apk add --update php-bcmath@php php-pdo@php php-gd@php pdo_mysql@php 
+RUN apk add --update php-bcmath@php php-pdo@php php-gd@php php-pdo_mysql@php 
 
 #Install Composer 
 RUN php7 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
