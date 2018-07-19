@@ -31,12 +31,24 @@ RUN apk add --update php@php
 RUN apk add --update php-mbstring@php php-fpm@php php-openssl@php php-phar@php php-json@php php-session@php
 RUN apk add --update php-bcmath@php php-pdo@php php-gd@php php-pdo_mysql@php 
 
+#Add other Junk as suggested by @fisayoafolayan
+RUN apk add --update php-bz2@php php-calendar@php php-ctype@php php-curl@php php-dba@php \
+ php-dom@php php-embed@php php-enchant@php php-exif@php php-ftp@php \
+ php-gettext@php php-gmp@php php-iconv@php php-imap@php php-intl@php php-json@php \
+ php-ldap@php php-litespeed@php php-mbstring@php php-mcrypt@php php-mysqli@php \
+ php-mysqlnd@php php-odbc@php php-opcache@php php-pcntl@php \
+ php-pdo_dblib@php php-pdo_pgsql@php php-pdo_sqlite@php \
+ php-pear@php php-pgsql@php php-phpdbg@php php-posix@php php-pspell@php \
+ php-shmop@php php-snmp@php php-soap@php php-sockets@php php-sqlite3@php \
+ php-sysvmsg@php php-sysvsem@php php-sysvshm@php php-tidy@php php-wddx@php php-xml@php \
+ php-xmlreader@php php-xmlrpc@php php-xsl@php php-zip@php php-zlib@php
+
 #Install Composer 
 RUN php7 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
 php7 composer-setup.php --install-dir=/usr/bin --filename=composer && \
 php7 -r "unlink('composer-setup.php');"
 
-#make php7 available as 'php'
+#Make php7 available as 'php'
 RUN  ln -s /usr/bin/php7 /usr/bin/php 
 
 #Configure Nginx to look at the correct directory for settings
