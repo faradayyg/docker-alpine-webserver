@@ -1,16 +1,13 @@
-# change to Alpine 3.6 you like.
 FROM alpine:3.7
 MAINTAINER Friday Godswill <friday@hotels.ng>
 
 #Some weird variables 
 ENV php_conf /etc/php7/php.ini
 ENV fpm_conf /etc/php7/php-fpm.d/www.conf
-ENV composer_hash 669656bab3166a7aff8a7506b8cb2d1c292f042046c5a994c43155c0be6190fa0355160742ab2e1c88d40d5be660b410
+
 
 # trust this project public key to trust the packages.
 ADD https://php.codecasts.rocks/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
-
-## you may join the multiple run lines here to make it a single layer
 
 # make sure you can use HTTPS
 RUN apk --update add ca-certificates bash
@@ -32,9 +29,7 @@ RUN echo "@php https://php.codecasts.rocks/v3.7/php-7.2" >> /etc/apk/repositorie
 # notice the @php is required to avoid getting default php packages from alpine instead.
 RUN apk add --update php@php
 RUN apk add --update php-mbstring@php php-fpm@php php-openssl@php php-phar@php php-json@php php-session@php
-
-#Enable openssl 
-#RUN sed -i -e "s/;extension=openssl/extension=openssl/g" ${php_conf}
+RUN apk add --update php-bcmath@php php-pdo@php php-gd@php pdo_mysql@php 
 
 #Install Composer 
 RUN php7 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
@@ -47,7 +42,6 @@ RUN  ln -s /usr/bin/php7 /usr/bin/php
 #Configure Nginx to look at the correct directory for settings
 RUN sed -ie "s/conf.d/sites-enabled/g" /etc/nginx/nginx.conf
 
-#ln -s /etc/nginx/sites-available/default.conf /etc/nginx/sites-enabled/default.conf && \
 #Configure php increase upload limits and stuff
 RUN sed -i \
         -e "s/;cgi.fix_pathinfo=1/cgi.fix_pathinfo=0/g" \
@@ -88,4 +82,3 @@ ADD conf/nginx-site.conf /etc/nginx/sites-available/default.conf
 WORKDIR /var/www
 
 CMD ["/init.sh"]
-#CMD ["chmod", "755", "init.sh", "./init.sh"]
