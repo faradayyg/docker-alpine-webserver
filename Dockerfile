@@ -10,7 +10,7 @@ ENV fpm_conf /etc/php7/php-fpm.d/www.conf
 ADD https://php.codecasts.rocks/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
 
 # make sure you can use HTTPS
-RUN apk --update add ca-certificates bash
+RUN apk --update add ca-certificates
 
 #Install Basic Requirements for life
 RUN apk --update add supervisor bash nano git nginx &&\
@@ -41,7 +41,7 @@ RUN apk add --update php-bz2@php php-calendar@php php-ctype@php php-curl@php php
  php-pear@php php-pgsql@php php-phpdbg@php php-posix@php php-pspell@php \
  php-shmop@php php-snmp@php php-soap@php php-sockets@php php-sqlite3@php \
  php-sysvmsg@php php-sysvsem@php php-sysvshm@php php-tidy@php php-wddx@php php-xml@php \
- php-xmlreader@php php-xmlrpc@php php-xsl@php php-zip@php php-zlib@php
+ php-xmlreader@php php-xmlrpc@php php-xsl@php php-zip@php php-zlib@php php-xmlrpc
 
 #Install Composer 
 RUN php7 -r "copy('https://getcomposer.org/installer', 'composer-setup.php');" && \
