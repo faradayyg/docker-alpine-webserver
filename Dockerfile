@@ -90,6 +90,7 @@ ADD init.sh /init.sh
 ADD conf/supervisord.conf /etc/supervisord.conf
 ADD conf/nginx.conf /etc/nginx/nginx.conf
 ADD conf/nginx-site.conf /etc/nginx/sites-available/default.conf
+ADD conf/start.sh /start.sh
 
 WORKDIR /var/www
 
