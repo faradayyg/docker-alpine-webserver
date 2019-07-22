@@ -7,13 +7,13 @@ ENV fpm_conf /etc/php7/php-fpm.d/www.conf
 
 
 # trust this project public key to trust the packages.
-ADD https://php.codecasts.rocks/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
+ADD https://dl.bintray.com/php-alpine/key/php-alpine.rsa.pub /etc/apk/keys/php-alpine.rsa.pub
 
 # make sure you can use HTTPS
 RUN apk --update add ca-certificates
 
 #Install Basic Requirements for life
-RUN apk --update add supervisor bash nano git nginx &&\
+RUN apk --update add supervisor bash nano nginx &&\
 	mkdir -p /etc/nginx && \
     mkdir -p /run/nginx && \
     mkdir -p /etc/nginx/sites-available && \
